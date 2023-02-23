@@ -22,8 +22,7 @@ public class FireMissileOnActivate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
-        grabbable.activated.AddListener(FireMissile);
+        
 
         
     }
