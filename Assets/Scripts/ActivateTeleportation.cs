@@ -13,6 +13,13 @@ public class ActivateTeleportation : MonoBehaviour
 
     public InputActionProperty leftActivate;
     public InputActionProperty rightActivate;
+    
+
+
+    bool AllowTP = true;
+
+
+
 
     // Start is called before the first frame update
     void Start(){
@@ -22,8 +29,19 @@ public class ActivateTeleportation : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        leftTeleportation.SetActive(leftActivate.action.ReadValue<float>()> 0.1f);
-        rightTeleportation.SetActive(rightActivate.action.ReadValue<float>()> 0.1f);
-        
+        if (AllowTP){
+            leftTeleportation.SetActive(leftActivate.action.ReadValue<float>()> 0.1f);
+            rightTeleportation.SetActive(rightActivate.action.ReadValue<float>()> 0.1f);
+        }   
     }
+
+    void canTP(bool allow = true){
+        AllowTP = allow;
+    }
+
+
+
+
+
+
 }

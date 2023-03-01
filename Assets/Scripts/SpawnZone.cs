@@ -21,13 +21,10 @@ public class SpawnZone : MonoBehaviour
     [SerializeField]
     private GameObject _objToSpawn;
 
-    /// <summary>
-    /// Spawn Time
-    /// </summary>
-    [SerializeField]
-    private float _minSpawnTime;
-    [SerializeField]
-    private float _maxSpawnTime;
+
+
+    private Wave currentWave;
+    private int leftToSpawn = 0;
 
 
     private List<GameObject> spawnedObjectsList = new();
@@ -56,16 +53,23 @@ public class SpawnZone : MonoBehaviour
         
     }
 
+    public void GetNewWaveData(Wave waveData){
+        currentWave = waveData;
+        leftToSpawn = waveData.asteroidCount;
+    }
+
+
+
 
     public IEnumerator SpawnAsteroid()
     {
         while (true)
         {
             print("Spawn Coroutine");
-            if (spawnedObjectsList.Count == _maxAsteroidInZone)
-                yield return new WaitUntil(() => spawnedObjectsList.Count < _maxAsteroidInZone / 2);
+            if (spawnedObjectsList.Count >= currentWave.maxAsteroidWave)
+                yield return new WaitUntil(() => spawnedObjectsList.Count < currentWave.maxAsteroidWave);
 
-            float timeBetweenSpawn = Random.Range(_minSpawnTime, _maxSpawnTime);
+            float timeBetweenSpawn = Random.Range(currentWave.timeBetweenSpawn.min, currentWave.timeBetweenSpawn.max);
 
             print("time between spawn : " + timeBetweenSpawn);
 
