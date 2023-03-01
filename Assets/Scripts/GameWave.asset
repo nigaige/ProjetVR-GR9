@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveList:
   - asteroidCount: 5
-    maxAsteroidWave: 2
+    maxAsteroidWave: 3
     asteroidSpeed: 0.5
     timeBetweenSpawn:
       min: 0

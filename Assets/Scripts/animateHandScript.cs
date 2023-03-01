@@ -25,7 +25,7 @@ public class animateHandScript : MonoBehaviour
         handAnimator.SetFloat("Grip", gripValue);
 
 
-        Debug.Log(pinchValue);
+       // Debug.Log(pinchValue);
 
     }
 }

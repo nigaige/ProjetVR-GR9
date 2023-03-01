@@ -45,17 +45,18 @@ public class SpawnZone : MonoBehaviour
 
         _center = transform.position;
 
-        StartCoroutine(SpawnAsteroid());
     }
 
     private void Update()
     {
-        
+        Debug.Log(spawnedObjectsList.Count);
     }
 
-    public void GetNewWaveData(Wave waveData){
+    public void startNewWave(Wave waveData){
+        StopCoroutine(SpawnAsteroid());
         currentWave = waveData;
         leftToSpawn = waveData.asteroidCount;
+        StartCoroutine(SpawnAsteroid());
     }
 
 
@@ -63,7 +64,7 @@ public class SpawnZone : MonoBehaviour
 
     public IEnumerator SpawnAsteroid()
     {
-        while (true)
+        while (leftToSpawn > 0)
         {
             print("Spawn Coroutine");
             if (spawnedObjectsList.Count >= currentWave.maxAsteroidWave)
@@ -80,9 +81,12 @@ public class SpawnZone : MonoBehaviour
             spawnedObjectsList.Add(spawnedObj);
 
             print("Objects spawned : " + spawnedObjectsList.Count);
+            leftToSpawn--;
 
 
         }
+
+        //TODO EMIT****************************************************************************************************************************************************************
          
     
     }

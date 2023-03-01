@@ -23,6 +23,6 @@ using System.Collections.Generic;
 public class WaveList : ScriptableObject{
 
     [SerializeField]
-    private List<Wave> waveList = new List<Wave>();
+    public List<Wave> waveList = new List<Wave>();
 
 }
