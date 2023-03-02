@@ -26,10 +26,12 @@ public class FireMissileOnActivate : MonoBehaviour
     [Range(0f, 1f)]
     private float _timeBetweenShots;
 
+    private bool isFiring = false;
+    private bool isCoolingDown = false;
+    
+
     private XRGrabInteractable _interactable;
 
-    [SerializeField]
-    private HapticInteractable _haptic;
 
     [field:SerializeField] 
     public int Ammo { get; private set; } = 10;
@@ -41,9 +43,21 @@ public class FireMissileOnActivate : MonoBehaviour
     [field:SerializeField]
     public TMP_Text MaxAmmoText;
 
+
+
+
+    private XRBaseController _controller;
+
+    [SerializeField]
+    private float hapticDuration = 0;
+    [SerializeField]
+    private float hapticIntensity = 0;
+
+
+
     private void Start(){
         MaxAmmoText.SetText(MaxAmmo.ToString());
-        AmmoText.SetText(MaxAmmo.ToString());
+        AmmoText.SetText(Ammo.ToString());
     }
     
     private void Awake()
@@ -53,40 +67,19 @@ public class FireMissileOnActivate : MonoBehaviour
     }
 
 
-    private IEnumerator FireMissile()
-    {
-        while (true) 
-        {
-            if(Ammo <= 0)
-            {
-                Mathf.Clamp(Ammo, 0, MaxAmmo);
-                StopCoroutine(FireMissile());
-            }
-            
-            // Set missile
-            GameObject spawnedMissile = Instantiate(_missile);
-            spawnedMissile.transform.position = _spawnPoint.transform.position;
-            spawnedMissile.GetComponent<Rigidbody>().velocity = _spawnPoint.transform.forward * _fireSpeed;
-            Destroy(spawnedMissile, 5);
 
-            _haptic.TriggerHaptic();
-                        
-            Ammo--;
-
-            yield return new WaitForSeconds(_timeBetweenShots);
+    public void StartFire(ActivateEventArgs arg) {
+        isFiring = true;
+        if (arg.interactorObject is XRBaseControllerInteractor controllerInteractor){
+            Debug.Log(controllerInteractor);
+            _controller = controllerInteractor.xrController;
         }
+        FireMissile();
+        
     }
 
-
-    public void StartFire(ActivateEventArgs arg)
-    {
-        if (Ammo >= 0 && _interactable.interactorsSelecting.Count == 2)
-            StartCoroutine(FireMissile());
-    }
-
-    public void StopFire(DeactivateEventArgs arg) 
-    { 
-        StopCoroutine(FireMissile());
+    public void StopFire(DeactivateEventArgs arg) { 
+        isFiring = false;
     }
 
     public void getAmmo(int count)
@@ -102,9 +95,22 @@ public class FireMissileOnActivate : MonoBehaviour
         }
     }
 
-    public void FireMissile(ActivateEventArgs arg)
+    private IEnumerator coolingDown (){
+        isCoolingDown = true;
+        yield return new WaitForSeconds(_timeBetweenShots);
+        isCoolingDown = false;
+        FireMissile();
+    }
+
+    public void TriggerHaptic(){
+            _controller.SendHapticImpulse(hapticIntensity,hapticDuration);
+  
+      }
+
+    public void FireMissile()
     {
-        if (Ammo > 0){
+        if (isCoolingDown) return;
+        if (Ammo > 0 && isFiring){
             GameObject spawnedMissile = Instantiate(_missile);
 
             spawnedMissile.transform.position = _spawnPoint.transform.position;
@@ -112,7 +118,12 @@ public class FireMissileOnActivate : MonoBehaviour
 
             Destroy(spawnedMissile, 5);
             Ammo--;
+
+
             AmmoText.SetText(Ammo.ToString());
+
+            StartCoroutine(coolingDown());
+            TriggerHaptic();
         }
     }
 }

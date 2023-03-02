@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
-
+/*
 public class HapticInteractable : MonoBehaviour
 {
 
@@ -29,16 +29,9 @@ public class HapticInteractable : MonoBehaviour
     }
 
 
-    public void TriggerHapticEvent(BaseInteractionEventArgs eventArgs)
-    {
-        if (eventArgs.interactorObject is XRBaseControllerInteractor controllerInteractor)
-        {
-            _controller = controllerInteractor.xrController;
 
-        }
-    }
 
-    public void TriggerHaptic()
+    public void TriggerHaptic( XRBaseController _controller)
     {
         if (_intensity > 0f)
         {
@@ -48,3 +41,4 @@ public class HapticInteractable : MonoBehaviour
 
 
 }
+*/

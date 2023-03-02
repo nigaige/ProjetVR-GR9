@@ -215,7 +215,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8568578384710784469}
         m_TargetAssemblyTypeName: FireMissileOnActivate, Assembly-CSharp
-        m_MethodName: FireMissile
+        m_MethodName: StartFire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,7 +227,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8568578384710784469}
+        m_TargetAssemblyTypeName: FireMissileOnActivate, Assembly-CSharp
+        m_MethodName: StopFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnFirstHoverEntered:
@@ -629,10 +641,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cf02781e5892a4196e0ed10d9b9556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indexTrigger:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   _missile: {fileID: 1363412412172102894, guid: 84b5e1b67a8d3664eb1233d417462a67,
     type: 3}
   _spawnPoint: {fileID: 6444717161753228075}
   _fireSpeed: 20
+  _timeBetweenShots: 0
+  _haptic: {fileID: 0}
   <Ammo>k__BackingField: 10
   <MaxAmmo>k__BackingField: 20
   AmmoText: {fileID: 5880723372322774076}
