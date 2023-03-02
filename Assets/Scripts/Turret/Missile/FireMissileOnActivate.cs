@@ -28,23 +28,16 @@ public class FireMissileOnActivate : MonoBehaviour
 
     private bool isFiring = false;
     private bool isCoolingDown = false;
-    
 
     private XRGrabInteractable _interactable;
 
+    [SerializeField]
+    private HapticInteractable _haptic;
 
     [field:SerializeField] 
     public int Ammo { get; private set; } = 10;
     [field:SerializeField] 
     public int MaxAmmo { get; private set; } = 20;
-    
-    [field:SerializeField]
-    public TMP_Text AmmoText;
-    [field:SerializeField]
-    public TMP_Text MaxAmmoText;
-
-
-
 
     private XRBaseController _controller;
 
@@ -53,6 +46,13 @@ public class FireMissileOnActivate : MonoBehaviour
     [SerializeField]
     private float hapticIntensity = 0;
 
+    [SerializeField]
+    public TMP_Text AmmoText;
+    [SerializeField]
+    public TMP_Text MaxAmmoText;
+
+    [SerializeField]
+    private TurretSFX _tSFX;
 
 
     private void Start(){
@@ -118,12 +118,10 @@ public class FireMissileOnActivate : MonoBehaviour
 
             Destroy(spawnedMissile, 5);
             Ammo--;
-
-
             AmmoText.SetText(Ammo.ToString());
-
-            StartCoroutine(coolingDown());
             TriggerHaptic();
+            _tSFX.PlayShootSound();
+            StartCoroutine(coolingDown());
         }
     }
 }
