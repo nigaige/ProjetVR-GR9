@@ -19,7 +19,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
     [SerializeField]
-    private ParticleSystem _particleSystem;
+    private ParticleSystem _destroyParticle;
 
     [field:SerializeField] 
     public SpawnZone spawner { get; set; }
@@ -50,15 +50,13 @@ public class Asteroid : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        _particleSystem.Play(true);
-       // Destroy(gameObject);
-    }
-
     private void OnDestroy()
     {
         spawner.asteroidDestroyed();
+
+        GameObject particle = Instantiate(_destroyParticle);
+        particle.GetComponent<ParticleSystem>().Play(true);
+        Destroy(particle, 2);
         //_particleSystem.Play();
     }
 }

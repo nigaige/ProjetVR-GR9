@@ -68,13 +68,10 @@ public class SpawnZone : MonoBehaviour
     {
         while (leftToSpawn > 0)
         {
-            print("Spawn Coroutine");
             if (currentAsteroidCount >= currentWave.maxAsteroidWave)
                 yield return new WaitUntil(() => currentAsteroidCount < currentWave.maxAsteroidWave);
 
             float timeBetweenSpawn = Random.Range(currentWave.timeBetweenSpawn.min, currentWave.timeBetweenSpawn.max);
-
-            print("time between spawn : " + timeBetweenSpawn);
 
             yield return new WaitForSeconds(timeBetweenSpawn);
 

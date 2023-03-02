@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RandomRotator : MonoBehaviour
+public class RandomRotation : MonoBehaviour
 {
 
     private float _rotationSpeed = 1f;

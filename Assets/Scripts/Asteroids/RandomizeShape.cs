@@ -12,14 +12,16 @@ public class RandomizeShape : MonoBehaviour
     [SerializeField]
     private List<Material> _asteroidMaterials = new();
 
-    private Mesh _currentMesh;
-    private Material _currentMaterial;
+    private MeshFilter _meshFilter;
+    private MeshRenderer _meshRenderer;
 
 
     private void Awake()
     {
-        _currentMesh = GetComponent<MeshFilter>().mesh;
-        _currentMaterial = GetComponent<MeshRenderer>().material;
+        _meshFilter = GetComponent<MeshFilter>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+
+        
     }
 
     // Start is called before the first frame update
@@ -27,24 +29,21 @@ public class RandomizeShape : MonoBehaviour
     {
         SetRandomMesh();
         SetRandomMaterial();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void SetRandomMesh()
     {
         int random = Random.Range(0, _asteroidMeshes.Count - 1);
-        _currentMesh = _asteroidMeshes[random];
+        _meshFilter.mesh = _asteroidMeshes[random];
+
     }
 
     private void SetRandomMaterial()
     {
         int random = Random.Range(0, _asteroidMaterials.Count - 1);
-        _currentMaterial = _asteroidMaterials[random];
+        _meshRenderer.material = _asteroidMaterials[random];
     }
 
 
