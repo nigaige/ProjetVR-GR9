@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8744015970038337822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.69, y: 1.38, z: -0.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87fc5f528cb274b459711cd8979eca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ammoCount>k__BackingField: 1
+  <ammoCount>k__BackingField: 50
 --- !u!54 &913555079931873964
 Rigidbody:
   m_ObjectHideFlags: 0
