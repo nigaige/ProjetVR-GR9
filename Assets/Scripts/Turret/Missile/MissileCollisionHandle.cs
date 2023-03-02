@@ -18,7 +18,7 @@ public class MissileCollisionHandle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        _hitParticle.Play();
+        //_hitParticle.Play();
         Destroy(other.gameObject);
         Destroy(this);
 
