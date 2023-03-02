@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour{
     private SpawnZone spawner;
     [SerializeField]
     private int BaseHP{ get; set;} = 10;
+    [SerializeField]
+    private CodeLyoko cl;
 
     // Start is called before the first frame update
     void Start(){
@@ -36,10 +38,7 @@ public class GameManager : MonoBehaviour{
     public void TakeDamage(){
         BaseHP--;
         if (BaseHP == 0){
-            GameOver();
+            cl.StartScaling();
         }
-    }
-    private void GameOver(){
-
     }
 }
