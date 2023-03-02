@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class FireMissileOnActivate : MonoBehaviour
@@ -18,8 +19,16 @@ public class FireMissileOnActivate : MonoBehaviour
     public int Ammo { get; private set; } = 10;
     [field:SerializeField] 
     public int MaxAmmo { get; private set; } = 20;
+    
+    [field:SerializeField]
+    public TMP_Text AmmoText;
+    [field:SerializeField]
+    public TMP_Text MaxAmmoText;
 
-
+    private void Start(){
+        MaxAmmoText.SetText(MaxAmmo.ToString());
+        AmmoText.SetText(MaxAmmo.ToString());
+    }
 
     public void getAmmo(int count){
         if (count >0){
@@ -41,6 +50,7 @@ public class FireMissileOnActivate : MonoBehaviour
 
             Destroy(spawnedMissile, 5);
             Ammo--;
+            AmmoText.SetText(Ammo.ToString());
         }
     }
 }
