@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour{
     private Image _healthBar;
     [field:SerializeField]
     private TMP_Text _healthPoints;
+    [field:SerializeField]
+    private TMP_Text WaveDisplay;
+    [field:SerializeField]
+    private TMP_Text WaveCoolDownDisplay;
 
     bool waitNextWave = false;
     float timeToNextWave = 0;
@@ -38,16 +42,19 @@ public class GameManager : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         if (waitNextWave){
+            
             timeToNextWave -= Time.deltaTime;
             if (timeToNextWave <=0){
                 newWave();
             }
+            updateCoolDownDisplay();
         }
     }
 
     void newWave(){
         currentWave ++;
         waitNextWave = false;
+        updateWaveDisplay();
         startWave();
     }
 
@@ -61,6 +68,18 @@ public class GameManager : MonoBehaviour{
 
 
 
+    }
+
+    void updateWaveDisplay(){
+        WaveDisplay.SetText("Wave " + (currentWave).ToString() );
+    }
+    void updateCoolDownDisplay(){
+        if (timeToNextWave>0){
+            WaveCoolDownDisplay.SetText("Next wave " + (timeToNextWave).ToString() );
+        }else{
+            WaveCoolDownDisplay.SetText("");
+        }
+        
     }
 
 
