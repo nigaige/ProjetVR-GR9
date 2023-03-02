@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour{
     private WaveList wave;
     [SerializeField]
     private SpawnZone spawner;
-
+    [SerializeField]
+    private int BaseHP{ get; set;} = 10;
 
     // Start is called before the first frame update
     void Start(){
@@ -32,5 +33,13 @@ public class GameManager : MonoBehaviour{
 
     }
 
+    public void TakeDamage(){
+        BaseHP--;
+        if (BaseHP == 0){
+            GameOver();
+        }
+    }
+    private void GameOver(){
 
+    }
 }
