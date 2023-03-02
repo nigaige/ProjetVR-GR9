@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour{
 
@@ -14,20 +16,25 @@ public class GameManager : MonoBehaviour{
     [SerializeField]
     private SpawnZone spawner;
     [SerializeField]
-    private int BaseHP{ get; set;} = 10;
+    private float BaseHP{ get; set;} = 10.0f;
     [SerializeField]
-    private CodeLyoko cl;
+    private CodeLyoko _codeLyoko;
+    [SerializeField]
+    private Image _healthBar;
+    [field:SerializeField]
+    private TMP_Text _healthPoints;
 
     // Start is called before the first frame update
     void Start(){
         newWave();
-        
+        _healthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        _healthBar.fillAmount = BaseHP / 10.0f;
+        _healthPoints.SetText(((int) BaseHP).ToString() + " HP");
     }
 
     void newWave(){
@@ -36,9 +43,9 @@ public class GameManager : MonoBehaviour{
     }
 
     public void TakeDamage(){
-        BaseHP--;
-        if (BaseHP == 0){
-            cl.StartScaling();
+        BaseHP = BaseHP - 1.0f;        
+        if (BaseHP <= 0.0f){
+            _codeLyoko.StartScaling();
         }
     }
 }
