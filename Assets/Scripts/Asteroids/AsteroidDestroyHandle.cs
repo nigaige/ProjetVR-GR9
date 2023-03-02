@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class AsteroidDestroyHandle : MonoBehaviour
 {
-<<<<<<< Updated upstream
 
-=======
     private ParticleSystem _particleSystem;
 
     private void Awake()
@@ -22,5 +20,5 @@ public class AsteroidDestroyHandle : MonoBehaviour
     {
         _particleSystem.Play();
     }
->>>>>>> Stashed changes
+
 }

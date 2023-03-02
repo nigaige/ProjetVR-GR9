@@ -19,7 +19,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
     [SerializeField]
-    private ParticleSystem particleSystem;
+    private ParticleSystem _particleSystem;
 
     [field:SerializeField] 
     public SpawnZone spawner { get; private set; }
@@ -60,6 +60,6 @@ public class Asteroid : MonoBehaviour
 
     private void Explode()
     {
-        particleSystem.Play();
+        _particleSystem.Play();
     }
 }
