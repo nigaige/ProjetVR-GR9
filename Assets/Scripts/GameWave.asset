@@ -13,9 +13,31 @@ MonoBehaviour:
   m_Name: GameWave
   m_EditorClassIdentifier: 
   waveList:
+  - asteroidCount: 0
+    maxAsteroidWave: 0
+    asteroidSpeed: 0
+    TimeBeforeNextWave: 10
+    timeBetweenSpawn:
+      min: 0
+      max: 2
   - asteroidCount: 5
     maxAsteroidWave: 3
     asteroidSpeed: 0.5
+    TimeBeforeNextWave: 20
+    timeBetweenSpawn:
+      min: 0
+      max: 2
+  - asteroidCount: 15
+    maxAsteroidWave: 5
+    asteroidSpeed: 0.5
+    TimeBeforeNextWave: 20
+    timeBetweenSpawn:
+      min: 0
+      max: 2
+  - asteroidCount: 100
+    maxAsteroidWave: 10
+    asteroidSpeed: 0.8
+    TimeBeforeNextWave: 20
     timeBetweenSpawn:
       min: 0
       max: 2

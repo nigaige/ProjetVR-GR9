@@ -15,16 +15,14 @@ public class MissileCollisionHandle : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
 
         _hitParticle.Play();
+        Destroy(other.gameObject);
         Destroy(this);
 
-        if (collision.collider.CompareTag("Hittable"))
-        {
-            Destroy(collision.gameObject);
-        }
+
             
     }
 
