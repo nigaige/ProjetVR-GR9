@@ -81,6 +81,9 @@ public class FireMissileOnActivate : MonoBehaviour
     public void StopFire(DeactivateEventArgs arg) { 
         isFiring = false;
     }
+    public void StopFire(SelectExitEventArgs arg) { 
+        isFiring = false;
+    }
 
     public void getAmmo(int count)
     {

@@ -54,9 +54,10 @@ public class Asteroid : MonoBehaviour
     {
         spawner.asteroidDestroyed();
 
-        GameObject particle = Instantiate(_destroyParticle);
+        ParticleSystem particle = Instantiate(_destroyParticle);
         particle.GetComponent<ParticleSystem>().Play(true);
-        Destroy(particle, 2);
+        particle.gameObject.transform.position = transform.position;
+       // Destroy(particle, 2);
         //_particleSystem.Play();
     }
 }
