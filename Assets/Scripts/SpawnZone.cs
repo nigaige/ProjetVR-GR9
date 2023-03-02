@@ -21,6 +21,9 @@ public class SpawnZone : MonoBehaviour
     [SerializeField]
     private Asteroid asteroid;
 
+    [SerializeField]
+    private GameManager GM;
+
 
 
     private Wave currentWave;
@@ -46,8 +49,7 @@ public class SpawnZone : MonoBehaviour
 
     }
 
-    private void Update()
-    {
+    private void Update(){
     }
 
     public void startNewWave(Wave waveData){
@@ -78,14 +80,14 @@ public class SpawnZone : MonoBehaviour
 
             Vector3 pos = MakeRandomTransform();
             Asteroid spawnedObj = Instantiate(asteroid, pos, Quaternion.identity);
-
+            spawnedObj.spawner = this;
+            spawnedObj.transform.forward = transform.forward;
             currentAsteroidCount ++;
 
             leftToSpawn--;
         }
 
-        //TODO EMIT****************************************************************************************************************************************************************
-         
+        GM.endWave();
     
     }
     

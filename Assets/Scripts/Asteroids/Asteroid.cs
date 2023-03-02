@@ -22,7 +22,7 @@ public class Asteroid : MonoBehaviour
     private ParticleSystem _particleSystem;
 
     [field:SerializeField] 
-    public SpawnZone spawner { get; private set; }
+    public SpawnZone spawner { get; set; }
 
 
 
@@ -46,7 +46,7 @@ public class Asteroid : MonoBehaviour
     {
         //var dir = (_targetTransform.position - transform.position).normalized;
 
-        _rb.velocity = _speed * Vector3.forward * Time.fixedDeltaTime;
+        _rb.velocity = _speed * transform.forward * Time.fixedDeltaTime;
     }
 
 

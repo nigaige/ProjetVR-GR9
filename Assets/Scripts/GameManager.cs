@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour{
     [SerializeField]
     private SpawnZone spawner;
     [SerializeField]
-    private float BaseHP{ get; set;} = 10.0f;
+    private int BaseHP{ get; set;} = 10;
     [SerializeField]
     private CodeLyoko _codeLyoko;
     [SerializeField]
@@ -24,26 +24,55 @@ public class GameManager : MonoBehaviour{
     [field:SerializeField]
     private TMP_Text _healthPoints;
 
+    bool waitNextWave = false;
+    float timeToNextWave = 0;
+
+
+
     // Start is called before the first frame update
     void Start(){
-        newWave();
-        _healthBar.fillAmount = 1;
+        startWave();
+        updateHP(BaseHP);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        _healthBar.fillAmount = BaseHP / 10.0f;
-        _healthPoints.SetText(((int) BaseHP).ToString() + " HP");
+    void Update(){
+        if (waitNextWave){
+            timeToNextWave -= Time.deltaTime;
+            if (timeToNextWave <=0){
+                newWave();
+            }
+        }
     }
 
     void newWave(){
+        currentWave ++;
+        waitNextWave = false;
+        startWave();
+    }
+
+    void startWave(){
         spawner.startNewWave(wave.waveList[currentWave]);
+    }
+
+    public void endWave(){
+        timeToNextWave = wave.waveList[currentWave].TimeBeforeNextWave;
+        waitNextWave = true;
+
+
 
     }
 
-    public void TakeDamage(){
-        BaseHP = BaseHP - 1.0f;        
+
+//PV
+    void updateHP(int HP){
+        _healthBar.fillAmount = (float)HP / 10.0f;
+        _healthPoints.SetText((HP).ToString() + " HP");
+    }
+
+    public void TakeDamage(int damage = 1){
+        BaseHP -= damage;
+        updateHP(BaseHP);      
         if (BaseHP <= 0.0f){
             _codeLyoko.StartScaling();
         }
