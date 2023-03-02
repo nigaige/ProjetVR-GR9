@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MoveAsteroid : MonoBehaviour
+public class Asteroid : MonoBehaviour
 {
     /// <summary>
     /// Asteroid Speed
@@ -18,6 +18,13 @@ public class MoveAsteroid : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _rb;
+    [SerializeField]
+    private ParticleSystem particleSystem;
+
+    [field:SerializeField] 
+    public SpawnZone spawner { get; private set; }
+
+
 
     //[SerializeField]
     //private Transform _targetTransform;
@@ -43,4 +50,17 @@ public class MoveAsteroid : MonoBehaviour
         _rb.velocity = _speed * Vector3.forward * Time.fixedDeltaTime;
     }
 
+
+
+
+    private void OnDestroy()
+    {
+        spawner.asteroidDestroyed();
+        Explode();
+    }
+
+    private void Explode()
+    {
+        particleSystem.Play();
+    }
 }

@@ -448,6 +448,8 @@ MonoBehaviour:
   _fireSpeed: 20
   <Ammo>k__BackingField: 10
   <MaxAmmo>k__BackingField: 20
+  AmmoText: {fileID: 0}
+  MaxAmmoText: {fileID: 0}
 --- !u!114 &5238146661619597150
 MonoBehaviour:
   m_ObjectHideFlags: 0

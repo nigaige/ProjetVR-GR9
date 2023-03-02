@@ -42,7 +42,7 @@ public class FireMissileOnActivate : MonoBehaviour
 
     public void FireMissile(ActivateEventArgs arg)
     {
-        if (Ammo >= 0){
+        if (Ammo > 0){
             GameObject spawnedMissile = Instantiate(_missile);
 
             spawnedMissile.transform.position = _spawnPoint.transform.position;

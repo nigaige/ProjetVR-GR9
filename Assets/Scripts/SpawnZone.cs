@@ -19,7 +19,7 @@ public class SpawnZone : MonoBehaviour
     /// Object To Spawn
     /// </summary>
     [SerializeField]
-    private GameObject _objToSpawn;
+    private Asteroid asteroid;
 
 
 
@@ -27,7 +27,9 @@ public class SpawnZone : MonoBehaviour
     private int leftToSpawn = 0;
 
 
-    private List<GameObject> spawnedObjectsList = new();
+    //private List<GameObject> spawnedObjectsList = new();
+
+    private int currentAsteroidCount = 0;
 
     private UnityEvent _spawnEvent;
 
@@ -40,16 +42,12 @@ public class SpawnZone : MonoBehaviour
         if (_spawnEvent == null)
             _spawnEvent = new UnityEvent();
 
-        
-
-
         _center = transform.position;
 
     }
 
     private void Update()
     {
-        Debug.Log(spawnedObjectsList.Count);
     }
 
     public void startNewWave(Wave waveData){
@@ -59,7 +57,9 @@ public class SpawnZone : MonoBehaviour
         StartCoroutine(SpawnAsteroid());
     }
 
-
+    public void asteroidDestroyed(){
+        currentAsteroidCount --;
+    }
 
 
     public IEnumerator SpawnAsteroid()
@@ -67,8 +67,8 @@ public class SpawnZone : MonoBehaviour
         while (leftToSpawn > 0)
         {
             print("Spawn Coroutine");
-            if (spawnedObjectsList.Count >= currentWave.maxAsteroidWave)
-                yield return new WaitUntil(() => spawnedObjectsList.Count < currentWave.maxAsteroidWave);
+            if (currentAsteroidCount >= currentWave.maxAsteroidWave)
+                yield return new WaitUntil(() => currentAsteroidCount < currentWave.maxAsteroidWave);
 
             float timeBetweenSpawn = Random.Range(currentWave.timeBetweenSpawn.min, currentWave.timeBetweenSpawn.max);
 
@@ -77,13 +77,11 @@ public class SpawnZone : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawn);
 
             Vector3 pos = MakeRandomTransform();
-            GameObject spawnedObj = Instantiate(_objToSpawn, pos, Quaternion.identity);
-            spawnedObjectsList.Add(spawnedObj);
+            Asteroid spawnedObj = Instantiate(asteroid, pos, Quaternion.identity);
 
-            print("Objects spawned : " + spawnedObjectsList.Count);
+            currentAsteroidCount ++;
+
             leftToSpawn--;
-
-
         }
 
         //TODO EMIT****************************************************************************************************************************************************************
