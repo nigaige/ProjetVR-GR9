@@ -104,7 +104,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8568578384710784469}
         m_TargetAssemblyTypeName: FireMissileOnActivate, Assembly-CSharp
-        m_MethodName: FireMissile
+        m_MethodName: StartFire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -116,7 +116,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8568578384710784469}
+        m_TargetAssemblyTypeName: FireMissileOnActivate, Assembly-CSharp
+        m_MethodName: StopFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnFirstHoverEntered:
@@ -189,7 +201,7 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers:
-  - {fileID: 0}
+  - {fileID: 8754097075678948887}
   m_AddDefaultGrabTransformers: 1
 --- !u!114 &8754097075678948887
 MonoBehaviour:
@@ -414,6 +426,7 @@ GameObject:
   - component: {fileID: 4789211385022210711}
   - component: {fileID: 3898842352446329862}
   - component: {fileID: 8568578384710784469}
+  - component: {fileID: 6524705004555755078}
   m_Layer: 0
   m_Name: MGMain
   m_TagString: Untagged
@@ -516,10 +529,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cf02781e5892a4196e0ed10d9b9556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indexTrigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Index Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e7b5f698-2e4e-4e5f-8804-d1ec9f690a5a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: bad126da-03d0-4ee7-9385-6dc758b2a6b6
+        m_Path: 
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Index Trigger
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   _missile: {fileID: 1363412412172102894, guid: 84b5e1b67a8d3664eb1233d417462a67,
     type: 3}
   _spawnPoint: {fileID: 6444717161753228075}
   _fireSpeed: 20
+  _timeBetweenShots: 0.101
+  <Ammo>k__BackingField: 10
+  <MaxAmmo>k__BackingField: 20
+--- !u!114 &6524705004555755078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789211385024478293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b231d0c2bbbb18d47a86ed09b4af819f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 0.318
+  _duration: 0.3
 --- !u!1 &4789211385024478295
 GameObject:
   m_ObjectHideFlags: 0
