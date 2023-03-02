@@ -19,6 +19,9 @@ public class FireMissileOnActivate : MonoBehaviour
     [SerializeField]
     private float _fireSpeed;
 
+    [SerializeField]
+    private ParticleSystem _muzzleFlashParticle;
+
     private XRBaseController _leftHand;
     private XRBaseController _rightHand;
 
@@ -115,7 +118,11 @@ public class FireMissileOnActivate : MonoBehaviour
 
             Destroy(spawnedMissile, 5);
             Ammo--;
+
             AmmoText.SetText(Ammo.ToString());
+
+            _muzzleFlashParticle.Play(true);
+
             TriggerHaptic();
             _tSFX.PlayShootSound();
             StartCoroutine(coolingDown());

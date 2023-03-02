@@ -50,11 +50,15 @@ public class Asteroid : MonoBehaviour
     }
 
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        _particleSystem.Play(true);
+        Destroy(gameObject);
+    }
 
     private void OnDestroy()
     {
         //spawner.asteroidDestroyed();
-        _particleSystem.Play();
+        
     }
 }

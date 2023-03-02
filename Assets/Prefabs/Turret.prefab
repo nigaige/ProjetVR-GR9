@@ -642,18 +642,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cf02781e5892a4196e0ed10d9b9556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indexTrigger:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Index Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3a69c2e1-4420-4cd2-9204-4e156be79742
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   _missile: {fileID: 1363412412172102894, guid: 84b5e1b67a8d3664eb1233d417462a67,
     type: 3}
   _spawnPoint: {fileID: 6444717161753228075}
   _fireSpeed: 20
-  _shootParticle: {fileID: 1268430131269003999}
+  _muzzleFlashParticle: {fileID: 1268430131269003999}
   _timeBetweenShots: 0
   <Ammo>k__BackingField: 10
   <MaxAmmo>k__BackingField: 20
-  AmmoText: {fileID: 5880723372322774076}
-  MaxAmmoText: {fileID: 5880723370621355951}
   hapticDuration: 0
   hapticIntensity: 0
+  AmmoText: {fileID: 5880723372322774076}
+  MaxAmmoText: {fileID: 5880723370621355951}
+  _tSFX: {fileID: 0}
 --- !u!1 &4789211385024478295
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,9 +915,25 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
       propertyPath: looping
@@ -917,6 +946,14 @@ PrefabInstance:
     - target: {fileID: 19800006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800008, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
       propertyPath: playOnAwake
@@ -964,6 +1001,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1268430131284604187}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1268430131284636603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: b0a227fc2e558f241b1c747820ccc361,
+    type: 3}
+  m_PrefabInstance: {fileID: 1268430131284604187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &454585503518890441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268430131284636603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &2761654410126669548
 PrefabInstance:
   m_ObjectHideFlags: 0
