@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class MissileCollisionHandle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    [SerializeField]
+    private ParticleSystem _hitParticle;
 
     // Update is called once per frame
     void Update()
@@ -19,13 +17,15 @@ public class MissileCollisionHandle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        _hitParticle.Play();
         Destroy(this);
 
         if (collision.collider.CompareTag("Hittable"))
         {
-
             Destroy(collision.gameObject);
         }
             
     }
+
 }

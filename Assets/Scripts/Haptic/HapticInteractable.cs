@@ -23,7 +23,7 @@ public class HapticInteractable : MonoBehaviour
 
     void Start()
     {
-        XRBaseInteractable interactable = GetComponent<XRBaseInteractable>();
+        XRBaseInteractable interactable = GetComponentInParent<XRBaseInteractable>();
 
         interactable.activated.AddListener(TriggerHapticEvent);
     }
@@ -32,14 +32,12 @@ public class HapticInteractable : MonoBehaviour
     public void TriggerHapticEvent(BaseInteractionEventArgs eventArgs)
     {
         if (eventArgs.interactorObject is XRBaseControllerInteractor controllerInteractor)
-        {
             _controller = controllerInteractor.xrController;
-
-        }
     }
 
     public void TriggerHaptic()
     {
+
         if (_intensity > 0f)
         {
             _controller.SendHapticImpulse(_duration, _intensity);

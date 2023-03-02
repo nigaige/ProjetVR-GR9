@@ -7,9 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class FireMissileOnActivate : MonoBehaviour
 {
-    [SerializeField]
-    private InputActionProperty _indexTrigger; 
-
+    
     [SerializeField]
     private GameObject _missile;
 
@@ -26,10 +24,11 @@ public class FireMissileOnActivate : MonoBehaviour
     [Range(0f, 1f)]
     private float _timeBetweenShots;
 
-    private XRGrabInteractable _interactable;
-
     [SerializeField]
     private HapticInteractable _haptic;
+
+    [SerializeField]
+    private ParticleSystem _muzzleFlashParticle;
 
     [field:SerializeField] 
     public int Ammo { get; private set; } = 10;
@@ -48,14 +47,13 @@ public class FireMissileOnActivate : MonoBehaviour
     
     private void Awake()
     {
-        _interactable = GetComponentInParent<XRGrabInteractable>();
         Mathf.Clamp(_timeBetweenShots, 0f, 1f);
     }
 
 
     private IEnumerator FireMissile()
     {
-        while (true) 
+        while (true)
         {
             if(Ammo <= 0)
             {
@@ -80,7 +78,7 @@ public class FireMissileOnActivate : MonoBehaviour
 
     public void StartFire(ActivateEventArgs arg)
     {
-        if (Ammo >= 0 && _interactable.interactorsSelecting.Count == 2)
+        if (Ammo >= 0)
             StartCoroutine(FireMissile());
     }
 
