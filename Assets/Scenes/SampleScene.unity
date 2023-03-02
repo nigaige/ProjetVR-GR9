@@ -845,7 +845,8 @@ MonoBehaviour:
   _center: {x: 0, y: 0, z: 0}
   _size: {x: 10, y: 10, z: 10}
   _maxAsteroidInZone: 5
-  asteroid: {fileID: 0}
+  asteroid: {fileID: 7455916437916882229, guid: 8a6260f83ba577742b16c6d814666025,
+    type: 3}
 --- !u!4 &1008813445
 Transform:
   m_ObjectHideFlags: 0
