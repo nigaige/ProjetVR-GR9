@@ -31,9 +31,6 @@ public class FireMissileOnActivate : MonoBehaviour
 
     private XRGrabInteractable _interactable;
 
-    [SerializeField]
-    private HapticInteractable _haptic;
-
     [field:SerializeField] 
     public int Ammo { get; private set; } = 10;
     [field:SerializeField] 

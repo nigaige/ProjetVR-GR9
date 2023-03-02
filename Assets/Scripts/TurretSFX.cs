@@ -10,7 +10,6 @@ public class TurretSFX : MonoBehaviour
     public float volume;
 
     public void PlayShootSound(){
-        Debug.Log("Source : " + source.ToString() + " Clip : " + clip.ToString() + " Volume : " + volume);
         source.PlayOneShot(clip, volume);
     }
 }
