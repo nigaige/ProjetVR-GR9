@@ -15,6 +15,7 @@ using System.Collections.Generic;
         public int asteroidCount;
         public int maxAsteroidWave;
         public float asteroidSpeed;
+        public float TimeBeforeNextWave;
         public range timeBetweenSpawn;
     }
 
