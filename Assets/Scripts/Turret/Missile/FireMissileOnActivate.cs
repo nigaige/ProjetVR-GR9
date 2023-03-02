@@ -90,12 +90,15 @@ public class FireMissileOnActivate : MonoBehaviour
         if (count > 0)
         {
             Debug.Log("Got Ammo");
+            Debug.Log(count);
             Ammo += count;
         }
         if (Ammo > MaxAmmo)
         {
             Ammo = MaxAmmo;
         }
+                    AmmoText.SetText(Ammo.ToString());
+
     }
 
     private IEnumerator coolingDown (){

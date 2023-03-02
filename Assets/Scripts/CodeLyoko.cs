@@ -11,7 +11,7 @@ public class CodeLyoko : MonoBehaviour
     [SerializeField]
     private float _scaleFactor = 0.1f;
     private Vector3 _scaleVector;
-
+    [SerializeField]
     private bool _upScale = false;
 
     private void Start(){
@@ -25,9 +25,14 @@ public class CodeLyoko : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
+
+        
+        Debug.Log("Lyoko");
         other.gameObject.transform.position = _deathZone.position;
         Destroy(_externalSphere);
         _upScale = false;
+
+
     }
 
     public void StartScaling(){

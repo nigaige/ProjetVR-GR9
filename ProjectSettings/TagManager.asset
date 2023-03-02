@@ -9,6 +9,7 @@ TagManager:
   - Destroyable
   - Ground
   - KeyNeeded
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - AmmoLoader
   - Base
   - Asteroid
-  - 
+  - lyoko
   - 
   - 
   - 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3998158246241674356}
   - component: {fileID: 4526192190256184911}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CodeLyoko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathZone: {fileID: 0}
   _externalSphere: {fileID: 5703746574675183571}
-  _scaleFactor: 0.1
+  _scaleFactor: 200
+  _upScale: 0
 --- !u!1 &5703746574675183571
 GameObject:
   m_ObjectHideFlags: 0
