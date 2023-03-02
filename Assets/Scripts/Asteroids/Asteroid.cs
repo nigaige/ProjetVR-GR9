@@ -54,7 +54,7 @@ public class Asteroid : MonoBehaviour
 
     private void OnDestroy()
     {
-        //spawner.asteroidDestroyed();
-        _particleSystem.Play();
+        spawner.asteroidDestroyed();
+        //_particleSystem.Play();
     }
 }
