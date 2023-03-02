@@ -34,7 +34,6 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         _speed = Random.Range(_minSpeed, _maxSpeed);
-        print("Speed : " + _speed);
     }
 
     // Update is called once per frame
